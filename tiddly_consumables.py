@@ -28,9 +28,8 @@ def get_line() -> tuple:
     quantity = input('Quantity (enter for single): ').strip() or 1
     if url:
         part_no = '[[{}|{}]]'.format(part_no, url)
-    price = '{} {}'.format(price,
-                           currency) if currency else '€{}'.format(price)
-    if not quantity == 1:
+    price = '{} {}'.format(price, currency) if currency else '€{}'.format(price)
+    if quantity != 1:
         price = '{}/{}'.format(price, quantity)
     rtn = '| {} |{} | {} | {} | {} |\n\r'.format(what, product, supplier, part_no, price)
     another = input('Another product? (y for another, enter to get result)')
@@ -50,9 +49,10 @@ def print_and_clipboard(result: str) -> None:
     r.clipboard_clear()
     r.clipboard_append(result)
     r.update()
-    """ """
     r.destroy()
+    print('-' * 60)
     print(result)
+    print('-' * 60)
 
 
 def main():
