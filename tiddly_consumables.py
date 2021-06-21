@@ -58,14 +58,17 @@ def main():
     """ """
     result = ''
     another = True
-
+    try:
     while another:
         line, another = get_line()
         result += line
 
+    except KeyboardInterrupt:
+        print('\r\n ----> CTRL+C detected, printing the gathered lines <----')
+    finally:
     print_and_clipboard(result)
-    # exit
     input('Data copied to clipboard, press enter to exit...')
+    # exit
 
 
 if __name__ == '__main__':
