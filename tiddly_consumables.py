@@ -12,7 +12,12 @@ else:
     from Tkinter import Tk
 
 
-def get_line():
+def get_line() -> tuple:
+    """Get data from user and format for one table line.
+
+    Returns:
+        tuple: one line(string) to be pasted in tiddlywiki table
+    """
     what = input("What:").strip()
     product = input("Product:").strip() or ''
     supplier = input("Supplier:").strip() or ''
@@ -33,17 +38,24 @@ def get_line():
     return rtn, another
 
 
-def print_and_clipboard(result):
+def print_and_clipboard(result: str) -> None:
+    """Print line(s) for the tiddlywiki table, and try to copy to clipboard.
+
+    Args:
+        result (str): string to be printed for tiddlywiki table
+    """
     r = Tk()
     r.withdraw()
     r.clipboard_clear()
     r.clipboard_append(result)
     r.update()
+    """ """
     r.destroy()
     print(result)
 
 
 def main():
+    """ """
     result = ''
     another = True
 
