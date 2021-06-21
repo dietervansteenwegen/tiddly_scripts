@@ -32,9 +32,10 @@ def get_line() -> tuple:
                            currency) if currency else '€{}'.format(price)
     if not quantity == 1:
         price = '{}/{}'.format(price, quantity)
-    rtn = '| {} |{} | {} | {} | {} |\n\r'.format(what, product, supplier, part_no,
-                                             price)
+    rtn = '| {} |{} | {} | {} | {} |\n\r'.format(what, product, supplier, part_no, price)
     another = input('Another product? (y for another, enter to get result)')
+    if another == 'n':
+        another = False
     return rtn, another
 
 
